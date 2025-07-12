@@ -1,0 +1,48 @@
+# /requirements.txt
+# title: Pythonパッケージ依存関係リスト
+# role: このプロジェクトの実行に必要なすべてのPythonライブラリとそのバージョンを定義する。
+
+# --- 主要AI・LLM関連ライブラリ ---
+ollama
+langchain
+langchain-core
+langchain-community
+langchain-google-community
+langchain-tavily
+llama-cpp-python
+
+# --- ベクトルストア・検索関連 ---
+faiss-cpu
+wikipedia
+google-search-results
+
+# --- アプリケーションフレームワーク・ユーティリティ ---
+dependency-injector
+pydantic
+
+# --- Web API関連 (追加) ---
+fastapi
+uvicorn[standard]
+tavily-python
+
+# --- 数値計算ライブラリ (バージョン指定) ---
+numpy<2.0
+
+# --- 環境変数 ---
+python-dotenv
+
+# --- 物理シミュレーション関連 ---
+gymnasium
+gymnasium-robotics
+mujoco
+torch
+
+# --- Webブラウジング関連 ---
+playwright
+
+# --- AI_sandbox 関連の依存関係 ---
+SQLAlchemy # サンドボックスのDB管理用
+psycopg2-binary # PostgreSQLを使用する場合に必要 (SQLiteの場合は不要だが汎用性のため追加)
+docker # Dockerコンテナ操作用
+types-docker # Dockerライブラリの型ヒント用
+watchdog # ファイルシステム監視用 (将来的な機能拡張用)

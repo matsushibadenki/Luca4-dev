@@ -1,0 +1,48 @@
+# Dockerfile.sandbox_base
+FROM python:3.10-slim-bookworm
+
+# 必要なシステムパッケージをインストール
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    vim \
+    xxd \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
+
+# 共有ディレクトリを作成
+RUN mkdir /share_area
+WORKDIR /share_area
+
+# 環境変数を設定 (必要に応じて)
+ENV PYTHONUNBUFFERED=1
+
+# pip, npmのアップグレード (オプション)
+RUN pip install --no-cache-dir --upgrade pip
+RUN npm install -g npm@latest
+
+# その他の共通ライブラリをインストール (例: numpy, pandas, requests)
+RUN pip install --no-cache-dir \
+    numpy \
+    pandas \
+    requests \
+    scipy \
+    scikit-learn \
+    langchain \
+    langchain-community \
+    python-dotenv \
+    injector \
+    SQLAlchemy \
+    psycopg2-binary \
+    docker \
+    langchain-ollama \
+    types-docker \
+    watchdog
+
+# nodejsに必要な依存関係 (もしあれば)
+# RUN npm install -g axios # 例
+
+# ユーザーのスクリプト実行のためのエントリポイントを定義しない
+# exec_run コマンドで直接コードを実行するため
